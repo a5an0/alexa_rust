@@ -9,80 +9,80 @@ use std::convert::From;
 /// Request struct corresponding to the [Alexa spec](https://developer.amazon.com/docs/custom-skills/request-and-response-json-reference.html#request-body-parameters)
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Request {
-    version: String,
-    session: Option<Session>,
+    pub version: String,
+    pub session: Option<Session>,
     #[serde(rename = "request")]
-    body: ReqBody,
-    context: Context,
+    pub body: ReqBody,
+    pub context: Context,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Session {
-    new: bool,
+    pub new: bool,
     #[serde(rename = "sessionId")]
-    session_id: String,
-    attributes: Option<HashMap<String, String>>,
-    application: Application,
-    user: User,
+    pub session_id: String,
+    pub attributes: Option<HashMap<String, String>>,
+    pub application: Application,
+    pub user: User,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Application {
     #[serde(rename = "applicationId")]
-    application_id: String,
+    pub application_id: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct User {
     #[serde(rename = "userId")]
-    user_id: String,
+    pub user_id: String,
     #[serde(rename = "accessToken")]
-    access_token: Option<String>,
+    pub access_token: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Device {
     #[serde(rename = "deviceId")]
-    device_id: String,
+    pub device_id: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct ReqBody {
     #[serde(rename = "type")]
-    reqtype: String,
+    pub reqtype: String,
     #[serde(rename = "requestId")]
-    request_id: String,
-    timestamp: String,
-    locale: String,
-    intent: Option<Intent>,
-    reason: Option<String>,
+    pub request_id: String,
+    pub timestamp: String,
+    pub locale: String,
+    pub intent: Option<Intent>,
+    pub reason: Option<String>,
     #[serde(rename = "dialogState")]
-    dialog_state: Option<String>,
+    pub dialog_state: Option<String>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Context {
     #[serde(rename = "System")]
-    system: System,
+    pub system: System,
     #[serde(rename = "AudioPlayer")]
-    audio_player: Option<AudioPlayer>,
+    pub audio_player: Option<AudioPlayer>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct System {
     #[serde(rename = "apiAccessToken")]
-    api_access_token: String,
-    device: Option<Device>,
-    application: Option<Application>,
+    pub api_access_token: String,
+    pub device: Option<Device>,
+    pub application: Option<Application>,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AudioPlayer {
-    token: String,
+    pub token: String,
     #[serde(rename = "offsetInMilliseconds")]
-    offset_in_milliseconds: u64,
+    pub offset_in_milliseconds: u64,
     #[serde(rename = "playerActivity")]
-    player_activity: String,
+    pub player_activity: String,
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
